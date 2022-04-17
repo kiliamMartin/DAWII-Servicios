@@ -3,37 +3,91 @@ table {
     margin-top: 3rem;
   }
 
+
 main{
-  
+
   margin: 0 auto;
-  width: 1500px;
-  background-color: purple;
+  padding: 0;
+  width: 100%;
+  max-width: 1850px; 
+  background-color: rgb(222, 222, 222);
+
   
 
 }
 
-.example-card {
-  
-
-
+.title{
+  color: black;
+  font-size: 18px;
+  margin-bottom: 3px;
 }
   
-  .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
-  }
+
 
 .cards{
-
-    display: inline-flex;
-  
-    /* padding: 3px; */
-    margin: 0 auto;
-    background-color: pink ;
+    text-align: center;
+    
+    width: 100%;
+    
 }
 
+.mat-card-avatar {
+  border-radius: 0;
+  width: 55px;
+  height: 50px;
+}
+.borrar{
+  background-image: url('https://e7.pngegg.com/pngimages/604/490/png-clipart-royal-dutch-shell-logo-graphics-perkins-oil-co-helix-angle-logo.png');
+  background-position: center;
+  background-size: 100% 100%;
+  background-size: cover;
+}
+.mat-card-header .mat-card-title {
+  margin-bottom: 2rem;
+}
 .card{
-  margin: 0 auto;
-  max-width: 300px;
+
+ 
+  height:230px;
+  width:250px;
+  margin:30px;
   
+  display: inline-block;
+  
+  text-align: left;
+ 
+ 
+}
+.example-card{
+  width: 100%;
+  height: 100%;
+  
+  
+
+}
+
+.btn-detalles{
+  text-align: center ;
+  color: yellow;
+  margin-top: 2rem;
+}
+
+.btn-container{
+  background-color: #0044ff;
+  width: 100%;
+  position: absolute;
+  bottom:0px;
+  left: 0px;
+  right:0px;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.btn-container button{
+  color: white;
+  width: 100%;
+}
+
+mat-card-subtitle{
+  color: black;
 }

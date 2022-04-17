@@ -1,24 +1,28 @@
 <app-navbar></app-navbar>
 <main>
-    <div class="cards" *ngFor="let g of GasList" >
-        <div class="card">
+    <div class="cards"  >
+        <div class="card" *ngFor="let g of GasList">
             <mat-card class="example-card">
+                
+                <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
                 <mat-card-header>
-                  <div mat-card-avatar class="example-header-image"></div>
-                  <mat-card-title>{{g['Rótulo']}}</mat-card-title>
-                  <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                  <div class="avatar" mat-card-avatar [ngStyle]="{'background-image': 'url('+ g.logo +')','background-position': 'center','background-size': '100% 100%'}">
+                     
+                  
+                  </div>
+
+                  <mat-card-title class="title">{{g['Rótulo']}}</mat-card-title>
+                  <mat-card-subtitle>{{g.Provincia}}</mat-card-subtitle>
+                  <mat-card-subtitle>{{g.Municipio.toUpperCase()}}</mat-card-subtitle>
+                  <mat-card-subtitle>{{g['Dirección']}}</mat-card-subtitle>
+                  
+                  
+                  
                 </mat-card-header>
-                <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-                <mat-card-content>
-                  <p>
-                    The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-                    
-                  </p>
-                </mat-card-content>
-                <mat-card-actions>
-                  <button mat-button>LIKE</button>
-                  <button mat-button>SHARE</button>
-                </mat-card-actions>
+                <div class="btn-container">
+                  <button mat-button>DETALLES</button>
+                </div>
+                
               </mat-card>
 
         </div>
@@ -26,4 +30,3 @@
     </div>
     
 </main>
-  

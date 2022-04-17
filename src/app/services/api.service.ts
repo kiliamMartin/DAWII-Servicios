@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class ApiService {
 
   gasData : ListaEESSPrecio[] = []
-  pepe: any[] = []
+
 
   constructor(private http: HttpClient) { 
    
@@ -21,23 +21,6 @@ export class ApiService {
   
 }
 
-
-/*
-.subscribe((response)=> {
-      this.gasData = response.ListaEESSPrecio
-      console.log(this.gasData[0]);
-      
-    });
-*/
-
-
-
-
-// To parse this data:
-//
-//   import { Convert, GasStations } from "./file";
-//
-//   const gasStations = Convert.toGasStations(json);
 
 export interface GasStations {
   Fecha:             string;
@@ -79,6 +62,7 @@ export interface ListaEESSPrecio {
   IDMunicipio:                          string;
   IDProvincia:                          string;
   IDCCAA:                               string;
+  logo:                                 string;
 }
 
 export enum BioEtanol {

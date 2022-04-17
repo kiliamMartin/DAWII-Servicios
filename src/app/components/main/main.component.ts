@@ -1,23 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { findIndex } from 'rxjs';
 import { ApiService, GasStations, ListaEESSPrecio } from 'src/app/services/api.service';
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
+
+
 
 @Component({
   selector: 'app-main',
@@ -25,8 +10,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+
+
 
   GasList : ListaEESSPrecio[] = []
 
@@ -36,8 +21,76 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.api.fetchGasStation().subscribe(result => {
-      this.GasList = result.ListaEESSPrecio
+     
+      this.GasList = this.filterGranCanariaOnly(result.ListaEESSPrecio)
+      this.addLogoToGS()
     })
+  }
+
+
+  private getLogoPath(logo:string): string{
+    switch(logo){
+      case "BP":
+          return "assets/bp.png"
+
+      case "SHELL":
+          return "assets/shell.png"
+      
+      case "DISA":
+          return "assets/disa.png"
+     
+      case "CEPSA":
+          return "assets/cepsa.jpg"
+      
+      case "REPSOL":
+        return "assets/repsol.png"
+      
+      case "CANARY":
+        return "assets/canary.jpeg"
+
+      case "PETROPRIX":
+        return "assets/petroprix.jpg"
+
+      case "OCÉANO":
+        return "assets/oceano.jpeg"
+        
+      default:
+          return "assets/undefined.png"
+    }
+  }
+
+
+  
+
+  private addLogoToGS(){
+    const logosArray: string[] = ['BP','CEPSA', 'DISA', 'CANARY', 'SHELL', 'REPSOL', 'PETROPRIX', 'OCÉANO']
+    for(let i = 0; i < this.GasList.length; i++){
+      this.GasList[i].logo = this.getLogoPath("UNDEFINED")
+      var chunked = this.GasList[i]['Rótulo'].split(" ")
+      for(let j = 0; j < chunked.length; j++){
+        if(logosArray.includes(chunked[j])){
+          this.GasList[i].logo = this.getLogoPath(chunked[j])
+          break;
+        }
+      }
+    }
+    
+  }
+
+  private filterGranCanariaOnly(GSList: ListaEESSPrecio[]){
+    var GasListFiltered : ListaEESSPrecio[] = []
+    const townsArray: string[] = ["Agaete", "Arucas","Agüimes", 
+    "Aldea de San Nicolás (La)", "Artenara", "Firgas","Gáldar","Ingenio","Mogán","Moya",
+    "Palmas de Gran Canaria (Las)","San Bartolomé de Tirajana","Santa Brígida", "Santa Lucía de Tirajana", 
+    "Santa María de Guía de Gran Canaria","Tejeda", "Telde","Teror", "Valleseco", "Valsequillo de Gran Canaria", 
+    "Vega de San Mateo"]
+    for(let i = 0; i < GSList.length; i++){
+        if(townsArray.includes(GSList[i].Municipio)){
+          GasListFiltered.push(GSList[i])
+        }
+    }
+    return GasListFiltered;
+
   }
 
 
