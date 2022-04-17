@@ -1,27 +1,25 @@
 # Servicios
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
+En esta práctica se ha realizado una SPA que muestra los detalles y precios de las gasolineras existentes en la isla de Gran Canaria. Para ello, se ha hecho uso de la API Rest del [Geoportal de Hidrocarburos del Gobierno de España](https://geoportalgasolineras.es/#/Descargas) a través de un servicio que se encarga de realizar las llamadas a la API. Para su desarrollo, se ha utilizado [Angular](https://angular.io/) junto con [Angular Material](https://material.angular.io/) para la interfaz y estética de la página.
 
-## Development server
+Como se ha comentado anteriormente, esta SPA permite al usuario observar un listado de las gasolineras de Gran Canaria y conocer el precio de los distintos combustibles (Gasolina 95, Gasolina 98 y Diésel). Además, se puede filtrar las gasolineras por nombre o por municipio.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Despliegue del proyecto
 
-## Code scaffolding
+Para el despliegue del proyecto se ha utilizado Vercel. [Enlace](https://daw-2-formulario-1fvzfae8a-kiliammartin.vercel.app/)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Antes de ejecutar el proyecto
 
-## Build
+1). Instalar npm `npm install -g npm` y [Node.js 16.14.2 LTS](https://nodejs.org/es/download/)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+2). Instalar Angular CLI `npm install -g @angular/cli`
 
-## Running unit tests
+## Ejecutar el proyecto
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1). Entrar en la carpeta del proyecto
 
-## Running end-to-end tests
+1). Ejecutar `npm install`
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+2). Por último arrancar el servidor `ng serve --open`
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
