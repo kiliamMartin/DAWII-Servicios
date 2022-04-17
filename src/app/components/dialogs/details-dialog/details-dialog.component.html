@@ -1,0 +1,29 @@
+
+<div class="info-dialog">
+    <div class="dialog">
+        <h1 mat-dialog-title>Detalles de la gasolinera</h1>
+        <mat-dialog-content class="content">
+            <div class="logo-container">
+                
+                <img class="logo" mat-card-image src={{data.logo}} >
+            </div>
+            
+
+            <label for=""><b>Nombre: </b></label>
+            <label for="">{{data.name}}</label><br><br>
+            <label for=""><b>Dirección: </b></label>
+            <label for="">{{data.address}}</label><br><br>
+            <label for=""><b>Municipio: </b></label>
+            <label for="">{{data.town.toUpperCase()}}</label><br><br>
+            <label for=""><b>Horario: </b></label>
+            <label for="">{{data.schedule}}</label><br><br>
+            <label for=""><b>Gasolina 95: </b></label>
+            <label for="">{{data.priceGas95 + " €/L"}}</label><br><br>
+            <label for=""><b>Gasolina 98: </b></label>
+            <label for="">{{data.priceGas98 + " €/L"}}</label><br><br>
+            <label for=""><b>Diésel: </b></label>
+            <label for="">{{data.priceDiesel + " €/L"}}</label><br><br>
+        </mat-dialog-content>
+        
+    </div>
+</div>

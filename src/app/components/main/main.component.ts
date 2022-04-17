@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 import { findIndex } from 'rxjs';
 import { ApiService, GasStations, ListaEESSPrecio } from 'src/app/services/api.service';
+import { DetailsDialogComponent } from '../dialogs/details-dialog/details-dialog.component';
 
 
 
@@ -11,11 +14,13 @@ import { ApiService, GasStations, ListaEESSPrecio } from 'src/app/services/api.s
 })
 export class MainComponent implements OnInit {
 
-
+  
+ 
 
   GasList : ListaEESSPrecio[] = []
 
-  constructor(private api: ApiService) {
+
+  constructor(private api: ApiService, private dialog: MatDialog) {
    
    }
 
@@ -24,7 +29,40 @@ export class MainComponent implements OnInit {
      
       this.GasList = this.filterGranCanariaOnly(result.ListaEESSPrecio)
       this.addLogoToGS()
+      
     })
+  }
+
+  openDetailsDialog(logo:string,name:string,address:string,town:string,schedule:string,priceGas95:string, priceGas98:string,priceDiesel:string) {
+    this.dialog.open(DetailsDialogComponent, {
+      data: 
+      {
+        logo:logo,
+        name:name,
+        address:address,
+        town:town,
+        schedule:schedule,
+        priceGas95:priceGas95, 
+        priceGas98:priceGas98,
+        priceDiesel:priceDiesel
+      },  
+      
+    });
+      
+    
+  }
+
+  onSearch(event: KeyboardEvent) {
+   var filterValue = (event.target as HTMLInputElement).value;
+    
+    if(filterValue === "") {this.ngOnInit()}
+    if(event.key =="Backspace") { }
+    this.GasList =this.GasList.filter(gs => gs['Rótulo'].toLowerCase().indexOf(filterValue.toLowerCase()) !== -1 ||
+    gs.Municipio.toLowerCase().indexOf(filterValue.toLowerCase()) !== -1) 
+    console.log(event.key)
+   
+    
+    
   }
 
 

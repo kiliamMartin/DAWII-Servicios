@@ -11,13 +11,20 @@ import {MatTableModule} from '@angular/material/table';
 import { MatCardModule} from '@angular/material/card'; 
 import {MatButtonModule} from '@angular/material/button'; 
 import { HttpClientModule } from '@angular/common/http';
+import { DetailsDialogComponent } from './components/dialogs/details-dialog/details-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    NavbarComponent
+    NavbarComponent,
+    DetailsDialogComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -27,7 +34,11 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     MatTableModule,
     MatButtonModule,
-    MatCardModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
